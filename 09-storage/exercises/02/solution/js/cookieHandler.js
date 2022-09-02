@@ -1,9 +1,10 @@
 const cookieHandler = {
   getAll() {
     return document.cookie.split(';').reduce((prev, curr) => {
-      const [full, key, value] = /^[ ]*([^=]+)=([^;]*)/.exec(curr);
-      prev[key] = value;
-      return prev;
+      const [, key, value] = /^[ ]*([^=]+)=([^;]*)/.exec(curr);
+      const newObj = prev;
+      newObj[key] = value;
+      return newObj;
     }, {});
   },
   toSessionStorage() {
